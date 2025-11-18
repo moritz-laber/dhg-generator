@@ -1,0 +1,38 @@
+[project]
+name = "dhg-generator"
+version = "1.0.0"
+description = "Generator for Deterministic Hyperbolic Graphs (DHG)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Narayan Sabhahit", email = "sabhahit.n@northeastern.edu" },
+    { name = "Moritz Laber", email = "laber.m@northeastern.edu"},
+    { name = "Harrison Hartle", email = "hthartle1@gmail.com"},
+    { name = "Jasper van der Kolk", email = "vanderkolkj@ceu.edu"},
+    { name = "Samuel V. Scarpino", email = "s.scarpino@northeastern.edu"},
+    { name = "Brennan Klein", email = "b.klein@northeastern.edu"},
+    { name = "Dmitri Krioukov", email = "dima@northeastern.edu"}
+]
+
+dependencies = [
+    "numpy>=2.3.0",
+    "scipy>=1.15.2"
+]
+
+[project.optional-dependencies]
+tutorial = [
+    "matplotlib>=3.10.3",
+    "jupyter>=7.4.3"
+]
+
+[project.urls]
+Repository = "https://github.com/moritz-laber/dhg-generator"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
