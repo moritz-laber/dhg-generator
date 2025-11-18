@@ -26,7 +26,7 @@ from dhg import dhg_generator
 A, (k,x,c) = dhg_generator(n=10_000, kbar=10, gamma=2.75, beta=2.5)
 ```
 
-generates a DHG with $n=10^4$ nodes, average degree $\bar{k}=10$, exponent $\gamma=2.75$, and inverse temperature $\beta=1.5$. The graph is returned as an adjacency matrix $A$, and the tuple provides information about the expected degree $k$, angular coordinate $x$, and log-chemical potential $c$.
+generates a DHG with $n=10^4$ nodes, average degree $\bar{k}=10$, exponent $\gamma=2.75$, and inverse temperature $\beta=2.5$. The graph is returned as an adjacency matrix $A$, and the tuple provides information about the expected degree $k$, angular coordinate $x$, and log-chemical potential $c$.
 
 ### Advanced
 The `dhg_generator` gives you further control over the graph generation with the following keyword arguments:
