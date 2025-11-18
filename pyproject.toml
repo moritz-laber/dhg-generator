@@ -3,7 +3,7 @@ name = "dhg-generator"
 version = "1.0.0"
 description = "Generator for Deterministic Hyperbolic Graphs (DHG)."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = { text = "MIT" }
 
 authors = [
