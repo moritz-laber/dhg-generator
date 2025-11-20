@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.sparse import coo_matrix
+from scipy.sparse import coo_matrix, csr_matrix
 from typing import Tuple
 
 def lcg(n: int, x0: int = 42, a: int = 7**5 , m: int = 2**31 - 1) -> np.ndarray:
@@ -258,7 +258,7 @@ def dhg_generator(
 
     Output
     A - adjacency matrix of the graph
-    properties - additional properties: each nodes expected degree k, angular coordinate x, the log-chemical potential c. 
+    (kappa, x, mu) - additional properties: the expected degree kappa_i (popularity) and angular coordinate x_i (similarity) of each node i as welll as the chemical potential mu. 
     """
 
     # generate subseeds for the random case
@@ -283,14 +283,14 @@ def dhg_generator(
 
     # transform coordinates to degree-like latent variables
     if finite_size_cutoff==True:
-        k = pareto_inverse_cdf(y, kbar, gamma, n=n)
+        kappa = pareto_inverse_cdf(y, kbar, gamma, n=n)
     else:
-        k = pareto_inverse_cdf(y, kbar, gamma)
+        kappa = pareto_inverse_cdf(y, kbar, gamma)
 
     
     # calculate the distance respecting periodic boundary conditions
     idx_i, idx_j = np.triu_indices(n, k=1)
-    chi_beta = np.power(n*(0.5 - np.abs(0.5 - np.abs(x[idx_i] - x[idx_j]))) / (k[idx_i]*k[idx_j]), beta)
+    chi_beta = np.power(n*(0.5 - np.abs(0.5 - np.abs(x[idx_i] - x[idx_j]))) / (kappa[idx_i]*kappa[idx_j]), beta)
 
     # determine the chemical potential in the thermodynamic limit
     c0 = (np.sin(np.pi/beta)/(np.pi/beta)) / (2*kbar)
@@ -333,5 +333,10 @@ def dhg_generator(
     # create the adjacency matrix
     A = coo_matrix((np.ones(edges_idx.shape[0]), (idx_i[edges_idx], idx_j[edges_idx])), shape=(n,n), dtype=np.int32)
     A = A + A.T
+    A.tocoo()
 
-    return A, (k, x, c)
+    # rescale to S1 model for output
+    mu = np.log(c)
+    x *= n
+
+    return A, (kappa, x, mu)
