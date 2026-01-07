@@ -1,5 +1,18 @@
 # DHG Generator
-This repository contains code for the **Deterministic Hyperbolic Graph (DHG) Generator** from the paper *Deterministic Construction of Typical Networks in Network Models* and a brief tutorial on how to use it.
+This repository contains code for the **Deterministic Hyperbolic Graph (DHG) Generator** from the paper [*Deterministic Construction of Typical Networks in Network Models*](https://arxiv.org/abs/2512.02254) and a brief tutorial on how to use it.
+
+If you use this software please cite the following article:
+
+```bibtex
+@article{sabhahit2025_deterministic,
+  title = {Deterministic Construction of Typical Networks in Network Models},
+  author = {Sabhahit, Narayan G. and Laber, Moritz and Hartle, Harrison and van der Kolk, Jasper and Scarpino, Samuel V. and Klein, Brennan and Krioukov, Dmitri},
+  year = {2025},
+  month = {12},
+  journal = {arXiv},
+  doi = {10.48550/arXiv.2512.02254},
+}
+```
 
 ## Installation 
 To use the DHG generator you can directly `pip install` from this repository using
